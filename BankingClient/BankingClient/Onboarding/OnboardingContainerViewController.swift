@@ -13,18 +13,15 @@ class OnboardingContainerViewController: UIViewController {
     
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
-    var currentVC: UIViewController {
-        didSet {
-
-        }
-    }
+    var currentVC: UIViewController
+    let skipButton = UIButton(type: .system)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
-        let page1 = ViewController1()
-        let page2 = ViewController2()
-        let page3 = ViewController3()
+        let page1 = OnboardingViewController(animationName: "mobile", labelText: "Take control with Banking that fits your needs. Anywhere. Anytime")
+        let page2 = OnboardingViewController(animationName: "payments", labelText: "Flexibile, on the go and reliable. Like Banking should be")
+        let page3 = OnboardingViewController(animationName: "app", labelText: "Manage your finances from anywhere and unlock your potential ")
 
         pages.append(page1)
         pages.append(page2)
@@ -42,6 +39,12 @@ class OnboardingContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setup()
+        style()
+        layout()
+    }
+
+    private func setup() {
         view.backgroundColor = .systemPurple
 
         addChild(pageViewController)
@@ -60,6 +63,23 @@ class OnboardingContainerViewController: UIViewController {
 
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
+    }
+
+    private func style() {
+        skipButton.translatesAutoresizingMaskIntoConstraints = false
+        skipButton.setTitle("Skip", for: [])
+        skipButton.addTarget(self, action: #selector(skipTapped), for: .primaryActionTriggered)
+
+        view.addSubview(skipButton)
+
+    }
+
+    private func layout() {
+        NSLayoutConstraint.activate([
+            skipButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            skipButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
+
     }
 }
 
@@ -95,79 +115,9 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     }
 }
 
-// MARK: - ViewControllers
-class ViewController1: UIViewController {
-    let animationView = AnimationView()
+// MARK: - Actions
+extension OnboardingContainerViewController {
+    @objc func skipTapped(_ sender: UIButton) {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupMobileAnimation()
-    }
-
-    private func setupMobileAnimation() {
-        animationView.animation = Animation.named("mobile")
-        animationView.frame = view.bounds
-        animationView.backgroundColor =  .white
-        animationView.contentMode = .scaleAspectFit
-
-        view.addSubview(animationView)
-
-        DispatchQueue.main.async {
-            self.animationView.currentProgress = 0
-            self.animationView.play()
-            self.animationView.loopMode = .loop
-            self.animationView.backgroundBehavior = .pauseAndRestore
-        }
-    }
-}
-
-class ViewController2: UIViewController {
-    let animationView = AnimationView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupPaymentAnimation()
-    }
-
-    private func setupPaymentAnimation() {
-        animationView.animation = Animation.named("payments")
-        animationView.frame = view.bounds
-        animationView.backgroundColor = .white
-        animationView.contentMode = .scaleAspectFit
-
-        view.addSubview(animationView)
-
-        DispatchQueue.main.async {
-            self.animationView.currentProgress = 0
-            self.animationView.play()
-            self.animationView.loopMode = .loop
-            self.animationView.backgroundBehavior = .pauseAndRestore
-        }
-    }
-}
-
-class ViewController3: UIViewController {
-    let animationView = AnimationView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupAppAnimation()
-
-    }
-
-   private func setupAppAnimation() {
-       animationView.animation = Animation.named("app")
-       animationView.frame = view.bounds
-       animationView.backgroundColor = .white
-       animationView.contentMode = .scaleAspectFit
-
-       view.addSubview(animationView)
-
-       DispatchQueue.main.async {
-           self.animationView.currentProgress = 0
-           self.animationView.play()
-           self.animationView.loopMode = .loop
-           self.animationView.backgroundBehavior = .pauseAndRestore
-       }
     }
 }
