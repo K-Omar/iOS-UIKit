@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lottie
 import UIKit
 
 class OnboardingContainerViewController: UIViewController {
@@ -96,22 +97,77 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
 
 // MARK: - ViewControllers
 class ViewController1: UIViewController {
+    let animationView = AnimationView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemMint
+        setupMobileAnimation()
+    }
+
+    private func setupMobileAnimation() {
+        animationView.animation = Animation.named("mobile")
+        animationView.frame = view.bounds
+        animationView.backgroundColor =  .white
+        animationView.contentMode = .scaleAspectFit
+
+        view.addSubview(animationView)
+
+        DispatchQueue.main.async {
+            self.animationView.currentProgress = 0
+            self.animationView.play()
+            self.animationView.loopMode = .loop
+            self.animationView.backgroundBehavior = .pauseAndRestore
+        }
     }
 }
 
 class ViewController2: UIViewController {
+    let animationView = AnimationView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        setupPaymentAnimation()
+    }
+
+    private func setupPaymentAnimation() {
+        animationView.animation = Animation.named("payments")
+        animationView.frame = view.bounds
+        animationView.backgroundColor = .white
+        animationView.contentMode = .scaleAspectFit
+
+        view.addSubview(animationView)
+
+        DispatchQueue.main.async {
+            self.animationView.currentProgress = 0
+            self.animationView.play()
+            self.animationView.loopMode = .loop
+            self.animationView.backgroundBehavior = .pauseAndRestore
+        }
     }
 }
 
 class ViewController3: UIViewController {
+    let animationView = AnimationView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
+        setupAppAnimation()
+
+    }
+
+   private func setupAppAnimation() {
+       animationView.animation = Animation.named("app")
+       animationView.frame = view.bounds
+       animationView.backgroundColor = .white
+       animationView.contentMode = .scaleAspectFit
+
+       view.addSubview(animationView)
+
+       DispatchQueue.main.async {
+           self.animationView.currentProgress = 0
+           self.animationView.play()
+           self.animationView.loopMode = .loop
+           self.animationView.backgroundBehavior = .pauseAndRestore
+       }
     }
 }
