@@ -13,6 +13,10 @@
 		22544709283B351000352444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22544707283B351000352444 /* LaunchScreen.storyboard */; };
 		22544713283B432B00352444 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22544712283B432B00352444 /* LoginView.swift */; };
 		22544716283C3CE100352444 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22544715283C3CE000352444 /* OnboardingContainerViewController.swift */; };
+		2254471A283F1FF400352444 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 22544719283F1FF400352444 /* Lottie */; };
+		2254471E283F240F00352444 /* mobile.json in Resources */ = {isa = PBXBuildFile; fileRef = 2254471D283F240F00352444 /* mobile.json */; };
+		22544720283F285600352444 /* app.json in Resources */ = {isa = PBXBuildFile; fileRef = 2254471F283F285600352444 /* app.json */; };
+		22544722283F28FA00352444 /* payments.json in Resources */ = {isa = PBXBuildFile; fileRef = 22544721283F28FA00352444 /* payments.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		2254470A283B351000352444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22544712283B432B00352444 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22544715283C3CE000352444 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
+		2254471D283F240F00352444 /* mobile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mobile.json; sourceTree = "<group>"; };
+		2254471F283F285600352444 /* app.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app.json; sourceTree = "<group>"; };
+		22544721283F28FA00352444 /* payments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = payments.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2254471A283F1FF400352444 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +68,7 @@
 				22544714283C3CB800352444 /* Onboarding */,
 				22544711283B42EA00352444 /* Login */,
 				225446FC283B350E00352444 /* AppDelegate.swift */,
+				22544723283F2BF200352444 /* Lottie */,
 			);
 			path = BankingClient;
 			sourceTree = "<group>";
@@ -91,6 +100,16 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		22544723283F2BF200352444 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				2254471D283F240F00352444 /* mobile.json */,
+				22544721283F28FA00352444 /* payments.json */,
+				2254471F283F285600352444 /* app.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,6 +126,9 @@
 			dependencies = (
 			);
 			name = BankingClient;
+			packageProductDependencies = (
+				22544719283F1FF400352444 /* Lottie */,
+			);
 			productName = BankingClient;
 			productReference = 225446F9283B350E00352444 /* BankingClient.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +157,9 @@
 				Base,
 			);
 			mainGroup = 225446F0283B350E00352444;
+			packageReferences = (
+				22544718283F1FF400352444 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 225446FA283B350E00352444 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,6 +176,9 @@
 			files = (
 				22544709283B351000352444 /* LaunchScreen.storyboard in Resources */,
 				22544706283B351000352444 /* Assets.xcassets in Resources */,
+				22544722283F28FA00352444 /* payments.json in Resources */,
+				22544720283F285600352444 /* app.json in Resources */,
+				2254471E283F240F00352444 /* mobile.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22544718283F1FF400352444 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22544719283F1FF400352444 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22544718283F1FF400352444 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 225446F1283B350E00352444 /* Project object */;
 }
