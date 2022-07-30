@@ -14,7 +14,7 @@ class OnboardingContainerViewController: UIViewController {
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
     var currentVC: UIViewController
-    let skipButton = UIButton(type: .system)
+    let closeButton = UIButton(type: .system)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -66,20 +66,21 @@ class OnboardingContainerViewController: UIViewController {
     }
 
     private func style() {
-        skipButton.translatesAutoresizingMaskIntoConstraints = false
-        skipButton.setTitle("Skip", for: [])
-        skipButton.addTarget(self, action: #selector(skipTapped), for: .primaryActionTriggered)
+        // Close Button
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setTitle("Close", for: [])
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .primaryActionTriggered)
 
-        view.addSubview(skipButton)
-
+        view.addSubview(closeButton)
     }
 
     private func layout() {
-        NSLayoutConstraint.activate([
-            skipButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            skipButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
-        ])
 
+        // Close Button
+        NSLayoutConstraint.activate([
+            closeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            closeButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
     }
 }
 
@@ -117,7 +118,12 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
 
 // MARK: - Actions
 extension OnboardingContainerViewController {
-    @objc func skipTapped(_ sender: UIButton) {
+
+    @objc func closeTapped(_ sender: UIButton) {
+
+    }
+
+    @objc func nextTapped(_ sender: UIButton) {
 
     }
 }
