@@ -13,6 +13,7 @@ class OnboardingViewController: UIViewController {
     let stackView = UIStackView()
     let animationView = AnimationView()
     let label = UILabel()
+    let nextButton = UIButton(type: .system)
 
     var animationName: String
     var labelText: String
@@ -65,6 +66,14 @@ extension OnboardingViewController {
         label.numberOfLines = 0
         label.text = labelText
 
+        // Next Button
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.configuration = .filled()
+        nextButton.setTitle("Next", for: [])
+        nextButton.configuration?.buttonSize = .large
+        nextButton.configuration?.cornerStyle = .capsule
+        nextButton.addTarget(self, action: #selector(nextTapped), for: .primaryActionTriggered)
+
     }
 
     func layout() {
@@ -72,6 +81,7 @@ extension OnboardingViewController {
         stackView.addArrangedSubview(label)
 
         view.addSubview(stackView)
+        view.addSubview(nextButton)
 
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -80,6 +90,16 @@ extension OnboardingViewController {
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1),
             label.centerYAnchor.constraint(equalTo: stackView.centerYAnchor, constant: 250)
         ])
+
+        // Next Buttton
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
+            nextButton.leadingAnchor.constraint(equalToSystemSpacingAfter: stackView.leadingAnchor, multiplier: 1),
+            stackView.trailingAnchor.constraint(equalToSystemSpacingAfter: nextButton.trailingAnchor, multiplier: 1)
+        ])
+    }
+
+    @objc func nextTapped(_ sender: UIButton) {
 
     }
 }

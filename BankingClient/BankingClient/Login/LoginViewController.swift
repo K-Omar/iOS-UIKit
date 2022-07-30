@@ -38,13 +38,15 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func style() {
         view.backgroundColor = .systemBackground
-        
+
+        // Title
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.text = "BankingClientApp"
 
+        // Subtitle
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -53,13 +55,15 @@ extension LoginViewController {
         subtitleLabel.text = "Banking that fits your needs!"
         
         loginView.translatesAutoresizingMaskIntoConstraints = false
-        
+
+        // Sign-in Buttonn
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configuration = .filled()
         signInButton.configuration?.imagePadding = 8
         signInButton.setTitle("Sign In", for: [])
         signInButton.addTarget(self, action: #selector(signInTapped), for: .primaryActionTriggered)
-        
+
+        // Error message
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         errorMessageLabel.textAlignment = .center
         errorMessageLabel.textColor = .systemRed
