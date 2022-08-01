@@ -17,6 +17,8 @@ class OnboardingViewController: UIViewController {
 
     var animationName: String
     var labelText: String
+    var isLastPage: Bool
+    weak var delegate: OnboardingContainerViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +26,10 @@ class OnboardingViewController: UIViewController {
         layout()
     }
 
-    init(animationName: String, labelText: String) {
+    init(animationName: String, labelText: String, isLastPage: Bool = false) {
         self.animationName = animationName
         self.labelText = labelText
+        self.isLastPage =  isLastPage
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -69,7 +72,7 @@ extension OnboardingViewController {
         // Next Button
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.configuration = .filled()
-        nextButton.setTitle("Next", for: [])
+        nextButton.setTitle(self.isLastPage ? "Done" : "Next", for: [])
         nextButton.configuration?.buttonSize = .large
         nextButton.configuration?.cornerStyle = .capsule
         nextButton.addTarget(self, action: #selector(nextTapped), for: .primaryActionTriggered)
@@ -100,6 +103,20 @@ extension OnboardingViewController {
     }
 
     @objc func nextTapped(_ sender: UIButton) {
+        if isLastPage {
+            print("Bye")
+            delegate?.didFinishOnboarding()
+        } else {
+            NotificationCenter.default.post(name: .nextButtonTapped, object: nil)
+        }
 
     }
+
+    @objc func doneTapped(_ sender: UIButton) {
+        //delegate?.didFinishOnboarding()
+    }
+}
+
+extension Notification.Name {
+    static let nextButtonTapped = Notification.Name("nextButtonTapped")
 }

@@ -18,6 +18,7 @@
 		22544720283F285600352444 /* app.json in Resources */ = {isa = PBXBuildFile; fileRef = 2254471F283F285600352444 /* app.json */; };
 		22544722283F28FA00352444 /* payments.json in Resources */ = {isa = PBXBuildFile; fileRef = 22544721283F28FA00352444 /* payments.json */; };
 		22544725284024AA00352444 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22544724284024AA00352444 /* OnboardingViewController.swift */; };
+		22F28C3428977DCE0032226B /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F28C3328977DCE0032226B /* LocalState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		2254471F283F285600352444 /* app.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app.json; sourceTree = "<group>"; };
 		22544721283F28FA00352444 /* payments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = payments.json; sourceTree = "<group>"; };
 		22544724284024AA00352444 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		22F28C3328977DCE0032226B /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		225446FB283B350E00352444 /* BankingClient */ = {
 			isa = PBXGroup;
 			children = (
+				22F28C3228977DB70032226B /* Utils */,
 				22544710283B42D700352444 /* Files */,
 				22544714283C3CB800352444 /* Onboarding */,
 				22544711283B42EA00352444 /* Login */,
@@ -111,6 +114,14 @@
 				2254471F283F285600352444 /* app.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		22F28C3228977DB70032226B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				22F28C3328977DCE0032226B /* LocalState.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22544713283B432B00352444 /* LoginView.swift in Sources */,
+				22F28C3428977DCE0032226B /* LocalState.swift in Sources */,
 				22544701283B350E00352444 /* LoginViewController.swift in Sources */,
 				22544725284024AA00352444 /* OnboardingViewController.swift in Sources */,
 				225446FD283B350E00352444 /* AppDelegate.swift in Sources */,
